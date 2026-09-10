@@ -252,5 +252,6 @@ strip.addEventListener('mouseup',()=>{isDown=false;strip.style.cursor=''});
 strip.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();const x=e.pageX-strip.offsetLeft;strip.scrollLeft=scrollLeft-(x-startX)*1.5});
 fetch('https://api.countapi.xyz/hit/weiyi-weeknd/visits').then(r=>r.json()).then(d=>{document.getElementById('vc').textContent=d.value}).catch(()=>{document.getElementById('vc').textContent='∞'});
 </script>
+<script src="../../translate.js" defer></script>
 </body>
 </html>
