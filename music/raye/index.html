@@ -1,9 +1,9 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RAYE — Weiyi's Music Space</title>
+<title>RAYE 鈥?Weiyi's Music Space</title>
 <style>
 :root{
   --bg:#0d0606;
@@ -24,20 +24,20 @@ body{
 }
 a{color:inherit;text-decoration:none}
 
-/* 滚动进度条 */
+/* 婊氬姩杩涘害鏉?*/
 .scroll-progress{
   position:fixed;top:0;left:0;z-index:200;height:2px;
   width:0;background:linear-gradient(90deg,var(--gold),var(--gold-bright));
   transition:width .1s linear;
 }
 
-/* 噪点纹理 */
+/* 鍣偣绾圭悊 */
 .grain{
   position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.05;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
 }
 
-/* 光标光晕 */
+/* 鍏夋爣鍏夋檿 */
 .cursor-glow{
   position:fixed;z-index:90;left:50%;top:50%;width:320px;height:320px;
   transform:translate(-50%,-50%);border-radius:50%;
@@ -45,7 +45,7 @@ a{color:inherit;text-decoration:none}
   pointer-events:none;mix-blend-mode:screen;transition:opacity .3s;
 }
 
-/* 导航 */
+/* 瀵艰埅 */
 header{
   position:fixed;top:0;left:0;right:0;z-index:150;
   padding:22px 5vw;display:flex;justify-content:space-between;
@@ -100,7 +100,7 @@ h1{
   50%{transform:translateY(8px)}
 }
 
-/* 跑马灯 */
+/* 璺戦┈鐏?*/
 .marquee{
   overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
   white-space:nowrap;padding:18px 0;background:var(--bg2);
@@ -112,7 +112,7 @@ h1{
 .marquee-inner span{margin:0 40px;opacity:.5}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
-/* 通用section */
+/* 閫氱敤section */
 section{padding:110px 5vw;border-bottom:1px solid var(--line)}
 .eyebrow{
   font-size:11px;letter-spacing:.25em;text-transform:uppercase;
@@ -123,7 +123,7 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
   letter-spacing:-.06em;margin:0 0 50px;
 }
 
-/* 介绍区域 */
+/* 浠嬬粛鍖哄煙 */
 .intro-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:8vw;align-items:end}
 .intro-grid p{
   font:400 clamp(22px,2.8vw,40px)/1.15 var(--serif);margin:0;
@@ -134,7 +134,7 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
 .meta div{border-top:1px solid var(--line);padding-top:14px}
 .meta strong{color:var(--fg);font-weight:500;display:block;margin-bottom:4px}
 
-/* 历程时间线 */
+/* 鍘嗙▼鏃堕棿绾?*/
 .journey{display:grid;gap:0}
 .journey-item{
   display:grid;grid-template-columns:120px 1fr;gap:40px;
@@ -157,7 +157,7 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
   border:1px solid var(--line);padding:4px 12px;border-radius:2px;
 }
 
-/* Oscar Winning Tears 特别区域 */
+/* Oscar Winning Tears 鐗瑰埆鍖哄煙 */
 .oscar-section{
   padding:0;position:relative;background:var(--bg2);overflow:hidden;
 }
@@ -200,7 +200,7 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
 }
 .oscar-link:hover{color:var(--fg)}
 
-/* 表演数据 */
+/* 琛ㄦ紨鏁版嵁 */
 .stats-bar{
   display:grid;grid-template-columns:repeat(4,1fr);
   border-top:1px solid var(--line);border-bottom:1px solid var(--line);
@@ -218,7 +218,7 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
 }
 .stat-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
 
-/* 电影胶片区域 */
+/* 鐢靛奖鑳剁墖鍖哄煙 */
 .cinema{padding:0;position:relative}
 .cinema-head{padding:100px 5vw 35px}
 .film-strip{
@@ -247,7 +247,7 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
 }
 .frame-label span{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
 
-/* 专辑区域 */
+/* 涓撹緫鍖哄煙 */
 .album-section{display:grid;grid-template-columns:.8fr 1.2fr;gap:7vw;align-items:center}
 .album-cover{
   position:relative;aspect-ratio:1;overflow:hidden;border-radius:2px;
@@ -277,7 +277,7 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
 .track-mini .name{color:var(--fg)}
 .track-mini .dur{color:var(--muted);font-size:12px}
 
-/* 精选曲目 */
+/* 绮鹃€夋洸鐩?*/
 .essential{display:grid;grid-template-columns:.6fr 1.4fr;gap:7vw}
 .tracklist{counter-reset:t}
 .track{
@@ -294,7 +294,7 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
 .track:hover strong{color:var(--gold-bright)}
 .track span{color:var(--muted);font-size:12px;letter-spacing:.05em}
 
-/* 页脚大图 */
+/* 椤佃剼澶у浘 */
 .footer-img{
   height:80svh;min-height:550px;position:relative;
   background:linear-gradient(0deg,rgba(13,6,6,.7),rgba(13,6,6,.2)),
@@ -312,7 +312,7 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
 }
 .footer-img div em{color:var(--gold-bright);font-style:italic}
 
-/* 滚动渐入 */
+/* 婊氬姩娓愬叆 */
 .reveal{opacity:0;transform:translateY(40px);transition:1s cubic-bezier(.2,.7,.2,1)}
 .reveal.on{opacity:1;transform:none}
 .reveal-left{opacity:0;transform:translateX(-40px);transition:1s cubic-bezier(.2,.7,.2,1)}
@@ -322,7 +322,7 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
 .reveal-scale{opacity:0;transform:scale(.95);transition:1.2s cubic-bezier(.2,.7,.2,1)}
 .reveal-scale.on{opacity:1;transform:none}
 
-/* 响应式 */
+/* 鍝嶅簲寮?*/
 @media(max-width:900px){
   .intro-grid,.album-section,.essential{grid-template-columns:1fr;gap:50px}
   .stats-bar{grid-template-columns:1fr 1fr}
@@ -349,6 +349,13 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .cursor-glow{display:none}
 }
+.spotify-section{padding:80px 5vw;background:var(--bg2)}
+.spotify-wrap{max-width:800px;margin:0 auto}
+.spotify-wrap h3{font:500 clamp(32px,4vw,56px)/.9 var(--serif);letter-spacing:-.05em;margin:0 0 30px;text-align:center}
+.spotify-wrap h3 em{color:var(--gold-bright);font-style:italic}
+.visitor-count{position:fixed;bottom:20px;right:20px;z-index:150;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);background:rgba(13,6,6,.8);backdrop-filter:blur(10px);padding:10px 16px;border-radius:2px;border:1px solid var(--line)}
+.visitor-count strong{color:var(--gold);font-weight:500}
+@media(max-width:600px){.visitor-count{display:none}}
 </style>
 </head>
 <body>
@@ -365,39 +372,39 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="kicker">Soul · Jazz · R&amp;B · Orchestral</div>
+    <div class="kicker">Soul 路 Jazz 路 R&amp;B 路 Orchestral</div>
     <h1>RAYE</h1>
     <div class="hero-copy">
-      Voice as instrument. <em>Oscar Winning Tears</em> at the Royal Albert Hall — where soul, orchestra and raw emotion collide.
+      Voice as instrument. <em>Oscar Winning Tears</em> at the Royal Albert Hall 鈥?where soul, orchestra and raw emotion collide.
     </div>
-    <div class="scroll-hint">Scroll to enter ↓</div>
+    <div class="scroll-hint">Scroll to enter 鈫?/div>
   </div>
 </section>
 
-<!-- 跑马灯 -->
+<!-- 璺戦┈鐏?-->
 <div class="marquee"><div class="marquee-inner">
-  OSCAR WINNING TEARS <span>·</span> HARD OUT HERE <span>·</span> BLACK MASCARA <span>·</span> ESCAPISM <span>·</span> WORTH IT <span>·</span> MY 21ST CENTURY BLUES <span>·</span> PRADA <span>·</span> BED TIME <span>·</span> FLIP A SWITCH <span>·</span>
-  OSCAR WINNING TEARS <span>·</span> HARD OUT HERE <span>·</span> BLACK MASCARA <span>·</span> ESCAPISM <span>·</span> WORTH IT <span>·</span> MY 21ST CENTURY BLUES <span>·</span> PRADA <span>·</span> BED TIME <span>·</span> FLIP A SWITCH <span>·</span>
+  OSCAR WINNING TEARS <span>路</span> HARD OUT HERE <span>路</span> BLACK MASCARA <span>路</span> ESCAPISM <span>路</span> WORTH IT <span>路</span> MY 21ST CENTURY BLUES <span>路</span> PRADA <span>路</span> BED TIME <span>路</span> FLIP A SWITCH <span>路</span>
+  OSCAR WINNING TEARS <span>路</span> HARD OUT HERE <span>路</span> BLACK MASCARA <span>路</span> ESCAPISM <span>路</span> WORTH IT <span>路</span> MY 21ST CENTURY BLUES <span>路</span> PRADA <span>路</span> BED TIME <span>路</span> FLIP A SWITCH <span>路</span>
 </div></div>
 
-<!-- 介绍 -->
+<!-- 浠嬬粛 -->
 <section>
   <div class="intro-grid">
     <p class="reveal">
-      After seven years fighting for artistic freedom, RAYE bet on herself — and won. <em>My 21st Century Blues</em> turned pain into poetry, and the Royal Albert Hall into church.
+      After seven years fighting for artistic freedom, RAYE bet on herself 鈥?and won. <em>My 21st Century Blues</em> turned pain into poetry, and the Royal Albert Hall into church.
     </p>
     <div class="meta reveal">
       <div><strong>Selected by</strong>Weiyi Li</div>
-      <div><strong>Listening mode</strong>Albums · live orchestral performance · vocal delivery</div>
-      <div><strong>Personal focus</strong>Oscar Winning Tears · Royal Albert Hall · My 21st Century Blues</div>
+      <div><strong>Listening mode</strong>Albums 路 live orchestral performance 路 vocal delivery</div>
+      <div><strong>Personal focus</strong>Oscar Winning Tears 路 Royal Albert Hall 路 My 21st Century Blues</div>
       <div><strong>Why it matters</strong>Voice as raw instrument, storytelling as survival</div>
     </div>
   </div>
 </section>
 
-<!-- 历程 -->
+<!-- 鍘嗙▼ -->
 <section>
-  <div class="eyebrow">The journey · 2014—2025</div>
+  <div class="eyebrow">The journey 路 2014鈥?025</div>
   <h2 class="title reveal">Seven years.<br>One breakthrough.</h2>
   <div class="journey">
     <div class="journey-item reveal">
@@ -409,10 +416,10 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
       </div>
     </div>
     <div class="journey-item reveal">
-      <div class="journey-year">2016—2022</div>
+      <div class="journey-year">2016鈥?022</div>
       <div class="journey-content">
         <h3>The label years</h3>
-        <p>Writing hits for others (Beyoncé, Little Mix, David Guetta) while her own debut was repeatedly delayed. A battle for artistic control that would define her.</p>
+        <p>Writing hits for others (Beyonc茅, Little Mix, David Guetta) while her own debut was repeatedly delayed. A battle for artistic control that would define her.</p>
         <span class="journey-tag">Behind the scenes</span>
       </div>
     </div>
@@ -420,7 +427,7 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
       <div class="journey-year">2023</div>
       <div class="journey-content">
         <h3>My 21st Century Blues</h3>
-        <p>Independent debut album. Raw, orchestral, unflinching — tackling trauma, addiction, and resilience. Oscar Winning Tears becomes the emotional centrepiece.</p>
+        <p>Independent debut album. Raw, orchestral, unflinching 鈥?tackling trauma, addiction, and resilience. Oscar Winning Tears becomes the emotional centrepiece.</p>
         <span class="journey-tag">Breakthrough album</span>
       </div>
     </div>
@@ -428,7 +435,7 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
       <div class="journey-year">2024</div>
       <div class="journey-content">
         <h3>BRIT Awards history</h3>
-        <p>Six BRIT Awards — most won by any artist in a single night. Album of the Year, Artist of the Year, Song of the Year. A vindication seven years in the making.</p>
+        <p>Six BRIT Awards 鈥?most won by any artist in a single night. Album of the Year, Artist of the Year, Song of the Year. A vindication seven years in the making.</p>
         <span class="journey-tag">Record-breaking</span>
       </div>
     </div>
@@ -436,7 +443,7 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
       <div class="journey-year">2024</div>
       <div class="journey-content">
         <h3>Live at the Royal Albert Hall</h3>
-        <p>A career-defining concert with the Heritage Orchestra. Oscar Winning Tears performed barefoot, in a white corset, under golden light — the moment everything crystallized.</p>
+        <p>A career-defining concert with the Heritage Orchestra. Oscar Winning Tears performed barefoot, in a white corset, under golden light 鈥?the moment everything crystallized.</p>
         <span class="journey-tag">The performance</span>
       </div>
     </div>
@@ -451,22 +458,22 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
   </div>
 </section>
 
-<!-- Oscar Winning Tears 特别区域 -->
+<!-- Oscar Winning Tears 鐗瑰埆鍖哄煙 -->
 <section class="oscar-section">
   <div class="oscar-hero">
     <div class="oscar-bg"></div>
     <div class="oscar-content reveal">
-      <div class="eyebrow">The defining performance · 26 September 2023</div>
+      <div class="eyebrow">The defining performance 路 26 September 2023</div>
       <h2>Oscar Winning<em>Tears.</em></h2>
-      <p>Royal Albert Hall. The Heritage Orchestra. A single spotlight. RAYE barefoot, voice trembling then soaring — a song about performing pain becomes the performance of a lifetime.</p>
+      <p>Royal Albert Hall. The Heritage Orchestra. A single spotlight. RAYE barefoot, voice trembling then soaring 鈥?a song about performing pain becomes the performance of a lifetime.</p>
       <div class="oscar-links">
-        <a class="oscar-link" target="_blank" href="https://www.youtube.com/results?search_query=raye+oscar+winning+tears+royal+albert+hall">Watch on YouTube ↗</a>
-        <a class="oscar-link" target="_blank" href="https://music.apple.com/us/album/oscar-winning-tears-live-at-the-royal-albert-hall/1731501830">Listen on Apple Music ↗</a>
+        <a class="oscar-link" target="_blank" href="https://www.youtube.com/results?search_query=raye+oscar+winning+tears+royal+albert+hall">Watch on YouTube 鈫?/a>
+        <a class="oscar-link" target="_blank" href="https://music.apple.com/us/album/oscar-winning-tears-live-at-the-royal-albert-hall/1731501830">Listen on Apple Music 鈫?/a>
       </div>
     </div>
   </div>
 
-  <!-- 数据条 -->
+  <!-- 鏁版嵁鏉?-->
   <div class="stats-bar">
     <div class="stat reveal">
       <div class="stat-num" data-count="28.4">0</div>
@@ -481,13 +488,13 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
       <div class="stat-label">Hz vibrato (opera-standard)</div>
     </div>
     <div class="stat reveal">
-      <div class="stat-num">1×</div>
-      <div class="stat-label">Grammy · Best R&B Performance</div>
+      <div class="stat-num">1脳</div>
+      <div class="stat-label">Grammy 路 Best R&B Performance</div>
     </div>
   </div>
 </section>
 
-<!-- 电影胶片 -->
+<!-- 鐢靛奖鑳剁墖 -->
 <section class="cinema">
   <div class="cinema-head">
     <div class="eyebrow">Live moments</div>
@@ -496,7 +503,7 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
   <div class="film-strip">
     <div class="frame">
       <img src="hero-royal-albert.jpg" alt="RAYE at Royal Albert Hall">
-      <div class="frame-label"><span>Royal Albert Hall · 2023</span>Red light, full orchestra</div>
+      <div class="frame-label"><span>Royal Albert Hall 路 2023</span>Red light, full orchestra</div>
     </div>
     <div class="frame">
       <img src="live-white-corset.jpg" alt="RAYE white corset performance">
@@ -504,7 +511,7 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
     </div>
     <div class="frame">
       <img src="live-grammy.jpg" alt="RAYE at the Grammys">
-      <div class="frame-label"><span>Grammy Awards · 2025</span>Black sequins, brass band</div>
+      <div class="frame-label"><span>Grammy Awards 路 2025</span>Black sequins, brass band</div>
     </div>
     <div class="frame">
       <img src="live-audience.jpg" alt="RAYE performance audience view">
@@ -517,16 +524,16 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
   </div>
 </section>
 
-<!-- 专辑 -->
+<!-- 涓撹緫 -->
 <section>
   <div class="album-section">
     <div class="album-cover reveal-scale">
       <img src="album-cover.jpg" alt="My 21st Century Blues album cover">
     </div>
     <div class="album-info reveal">
-      <div class="album-year">Debut album · 2023</div>
+      <div class="album-year">Debut album 路 2023</div>
       <h3>My 21st<br>Century Blues.</h3>
-      <p>RAYE's independent debut is a genre-fluid song cycle — R&B, jazz, soul, and orchestral pop woven into a narrative of survival. From the gospel-tinged Hard Out Here to the devastating Oscar Winning Tears, every track feels like a confession delivered with technical precision.</p>
+      <p>RAYE's independent debut is a genre-fluid song cycle 鈥?R&B, jazz, soul, and orchestral pop woven into a narrative of survival. From the gospel-tinged Hard Out Here to the devastating Oscar Winning Tears, every track feels like a confession delivered with technical precision.</p>
       <div class="tracklist-mini">
         <div class="track-mini"><span class="num">01</span><span class="name">Introduction.</span><span class="dur">0:52</span></div>
         <div class="track-mini"><span class="num">02</span><span class="name">Oscar Winning Tears.</span><span class="dur">4:01</span></div>
@@ -539,38 +546,39 @@ section{padding:110px 5vw;border-bottom:1px solid var(--line)}
   </div>
 </section>
 
-<!-- 精选曲目 -->
+<!-- 绮鹃€夋洸鐩?-->
 <section>
   <div class="essential">
     <div class="reveal-left">
       <div class="eyebrow">Weiyi's selection</div>
       <h2 class="title" style="font-size:clamp(48px,6.5vw,95px)">Essential<br>RAYE.</h2>
-      <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-top:20px;max-width:350px">The songs that define the journey — from raw balladry to orchestral triumph.</p>
+      <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-top:20px;max-width:350px">The songs that define the journey 鈥?from raw balladry to orchestral triumph.</p>
     </div>
     <div class="tracklist reveal-right">
       <div class="track"><strong>Oscar Winning Tears</strong><span>My 21st Century Blues</span></div>
       <div class="track"><strong>Hard Out Here</strong><span>My 21st Century Blues</span></div>
       <div class="track"><strong>Black Mascara</strong><span>My 21st Century Blues</span></div>
-      <div class="track"><strong>Escapism</strong><span>My 21st Century Blues · ft. 070 Shake</span></div>
+      <div class="track"><strong>Escapism</strong><span>My 21st Century Blues 路 ft. 070 Shake</span></div>
       <div class="track"><strong>Worth It</strong><span>My 21st Century Blues</span></div>
       <div class="track"><strong>Mary Jane</strong><span>My 21st Century Blues</span></div>
       <div class="track"><strong>Bed Time</strong><span>My 21st Century Blues</span></div>
       <div class="track"><strong>Flip a Switch</strong><span>My 21st Century Blues</span></div>
-      <div class="track"><strong>Prada</strong><span>cassö x RAYE x David Guetta</span></div>
-      <div class="track"><strong>Oscar Winning Tears — Live</strong><span>Royal Albert Hall · 2023</span></div>
-      <div class="track"><strong>Worth It — Live</strong><span>Royal Albert Hall · 2023</span></div>
-      <div class="track"><strong>Oscar Winning Tears — Grammy</strong><span>67th Grammy Awards · 2025</span></div>
+      <div class="track"><strong>Prada</strong><span>cass枚 x RAYE x David Guetta</span></div>
+      <div class="track"><strong>Oscar Winning Tears 鈥?Live</strong><span>Royal Albert Hall 路 2023</span></div>
+      <div class="track"><strong>Worth It 鈥?Live</strong><span>Royal Albert Hall 路 2023</span></div>
+      <div class="track"><strong>Oscar Winning Tears 鈥?Grammy</strong><span>67th Grammy Awards 路 2025</span></div>
     </div>
   </div>
 </section>
 
-<!-- 页脚 -->
+<!-- 椤佃剼 -->
+<section class="spotify-section"><div class="spotify-wrap reveal"><h3>Listen on <em>Spotify</em></h3><iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/1I7SIiJUCa6O3jYNAKD6nQ?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div></section>
 <div class="footer-img">
   <div>SOUL / JAZZ /<br><em>RESILIENCE.</em></div>
 </div>
 
 <script>
-// 滚动进度条
+// 婊氬姩杩涘害鏉?
 const progressBar = document.querySelector('.scroll-progress');
 const updateProgress = () => {
   const h = document.documentElement.scrollHeight - innerHeight;
@@ -580,7 +588,7 @@ addEventListener('scroll', updateProgress, {passive:true});
 addEventListener('resize', updateProgress);
 updateProgress();
 
-// 光标光晕
+// 鍏夋爣鍏夋檿
 const glow = document.querySelector('.cursor-glow');
 let glowX = innerWidth/2, glowY = innerHeight/2, targetX = glowX, targetY = glowY;
 addEventListener('pointermove', e => { targetX = e.clientX; targetY = e.clientY; });
@@ -592,13 +600,13 @@ addEventListener('pointermove', e => { targetX = e.clientX; targetY = e.clientY;
   requestAnimationFrame(animateGlow);
 })();
 
-// 滚动渐入
+// 婊氬姩娓愬叆
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
 }, {threshold:.12});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => obs.observe(el));
 
-// 数字计数动画
+// 鏁板瓧璁℃暟鍔ㄧ敾
 const countObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if(e.isIntersecting){
@@ -619,7 +627,7 @@ const countObs = new IntersectionObserver(entries => {
 }, {threshold:.5});
 document.querySelectorAll('.stat-num[data-count]').forEach(el => countObs.observe(el));
 
-// Hero视差
+// Hero瑙嗗樊
 addEventListener('mousemove', e => {
   const x = (e.clientX / innerWidth - .5) * 12;
   const y = (e.clientY / innerHeight - .5) * 8;
@@ -627,7 +635,7 @@ addEventListener('mousemove', e => {
     `scale(1.03) translate(${x}px,${y}px)`;
 });
 
-// 电影胶片拖拽滚动
+// 鐢靛奖鑳剁墖鎷栨嫿婊氬姩
 const strip = document.querySelector('.film-strip');
 let isDown = false, startX, scrollLeft;
 strip.addEventListener('mousedown', e => {
@@ -642,6 +650,8 @@ strip.addEventListener('mousemove', e => {
   const x = e.pageX - strip.offsetLeft;
   strip.scrollLeft = scrollLeft - (x - startX) * 1.5;
 });
+fetch('https://api.countapi.xyz/hit/weiyi-raye/visits').then(r=>r.json()).then(d=>{document.getElementById('vc').textContent=d.value}).catch(()=>{document.getElementById('vc').textContent='∞'});
 </script>
+<div class="visitor-count">Visitors: <strong id="vc">--</strong></div>
 </body>
 </html>
