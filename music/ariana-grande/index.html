@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ariana Grande — Weiyi's Music Space</title>
+<style>
+:root{
+  --bg:#0f0a12;
+  --bg2:#1a0f1f;
+  --fg:#f5eef8;
+  --muted:#9a8ba8;
+  --line:rgba(230,180,220,.15);
+  --pink:#e8a0d0;
+  --pink-bright:#f5c8e5;
+  --wine:#8b2252;
+  --gold:#d4a574;
+  --serif:Georgia,'Times New Roman',serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font-family:Inter,Arial,sans-serif;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+
+/* 滚动进度条 */
+.scroll-progress{
+  position:fixed;top:0;left:0;z-index:200;height:2px;
+  width:0;background:linear-gradient(90deg,var(--pink),var(--pink-bright),var(--gold));
+  transition:width .1s linear;
+}
+
+/* 噪点纹理 */
+.grain{
+  position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+
+/* 漂浮气泡 */
+.bubbles{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.bubble{
+  position:absolute;bottom:-100px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.25),rgba(232,160,208,.08) 60%,transparent);
+  border:1px solid rgba(255,255,255,.1);
+  animation:floatUp linear infinite;
+}
+@keyframes floatUp{
+  0%{transform:translateY(0) scale(1);opacity:0}
+  10%{opacity:.6}
+  90%{opacity:.4}
+  100%{transform:translateY(-110vh) scale(1.1);opacity:0}
+}
+
+/* 光标光晕 */
+.cursor-glow{
+  position:fixed;z-index:90;left:50%;top:50%;width:350px;height:350px;
+  transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(232,160,208,.12),transparent 70%);
+  pointer-events:none;mix-blend-mode:screen;transition:opacity .3s;
+}
+
+/* 导航 */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:150;
+  padding:22px 5vw;display:flex;justify-content:space-between;
+  mix-blend-mode:difference;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+}
+header a{transition:opacity .3s}
+header a:hover{opacity:.6}
+
+/* Hero */
+.hero{
+  height:100svh;min-height:720px;position:relative;
+  display:flex;align-items:flex-end;padding:8vw 5vw 6vw;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(15,10,18,.85),rgba(15,10,18,.3) 50%,rgba(15,10,18,.5)),
+  url('hero-sweetener-moon.jpg') center/cover no-repeat;
+  animation:heroZoom 22s ease-in-out infinite alternate;
+  transform:scale(1.03);
+}
+@keyframes heroZoom{
+  to{transform:scale(1.12) translate3d(1%,-1.5%,0)}
+}
+.hero-content{position:relative;z-index:2;max-width:1100px}
+.kicker{
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--pink-bright);margin-bottom:22px;
+  animation:fadeUp 1s .2s both;
+}
+h1{
+  font:500 clamp(72px,14vw,220px)/.72 var(--serif);
+  letter-spacing:-.08em;margin:0 0 28px;
+  background:linear-gradient(135deg,var(--fg) 0%,var(--pink-bright) 45%,var(--pink) 75%,var(--gold) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:fadeUp 1s .4s both, shimmer 6s ease-in-out 1s infinite;
+  background-size:200% 200%;
+}
+@keyframes shimmer{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+.hero-copy{
+  max-width:620px;font:400 clamp(18px,2vw,26px)/1.3 var(--serif);
+  color:#e0d5e8;animation:fadeUp 1s .6s both;
+}
+.hero-copy em{color:var(--pink-bright);font-style:italic}
+.scroll-hint{
+  margin-top:40px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);animation:fadeUp 1s .8s both,bounce 2s 1.8s infinite;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:none}
+}
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(8px)}
+}
+
+/* 跑马灯 */
+.marquee{
+  overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  white-space:nowrap;padding:18px 0;background:var(--bg2);
+}
+.marquee-inner{
+  display:inline-block;font:italic 500 26px/1 var(--serif);
+  color:var(--pink);animation:marquee 28s linear infinite;
+}
+.marquee-inner span{margin:0 40px;opacity:.4}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* 通用section */
+section{padding:110px 5vw;border-bottom:1px solid var(--line)}
+.eyebrow{
+  font-size:11px;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--pink);margin-bottom:20px;
+}
+.title{
+  font:500 clamp(48px,7vw,110px)/.85 var(--serif);
+  letter-spacing:-.06em;margin:0 0 50px;
+}
+
+/* 介绍区域 */
+.intro-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:8vw;align-items:end}
+.intro-grid p{
+  font:400 clamp(22px,2.8vw,40px)/1.15 var(--serif);margin:0;
+  color:#e8dff0;
+}
+.intro-grid p em{color:var(--pink-bright);font-style:italic}
+.meta{display:grid;gap:18px;color:var(--muted);font-size:13px}
+.meta div{border-top:1px solid var(--line);padding-top:14px}
+.meta strong{color:var(--fg);font-weight:500;display:block;margin-bottom:4px}
+
+/* 专辑历程网格 */
+.eras-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);
+}
+.era{
+  background:var(--bg2);padding:28px 24px;min-height:280px;
+  display:flex;flex-direction:column;transition:all .45s ease;
+  position:relative;overflow:hidden;
+}
+.era:before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent,rgba(232,160,208,.06));
+  opacity:0;transition:opacity .4s;
+}
+.era:hover{background:#221528;transform:translateY(-5px)}
+.era:hover:before{opacity:1}
+.era .year{color:var(--pink);font-size:11px;letter-spacing:.12em;font-weight:600}
+.era h3{font:500 24px/1.1 var(--serif);margin:14px 0 10px}
+.era p{color:#a898b5;font-size:13px;line-height:1.6;margin:0}
+.era .tracks{
+  margin-top:auto;font-size:11px;color:var(--pink-bright);
+  border-top:1px solid var(--line);padding-top:14px;line-height:1.7;
+}
+
+/* Sweetener Tour 特别区域 */
+.tour-section{padding:0;position:relative;background:var(--bg2);overflow:hidden}
+.tour-hero{
+  min-height:90svh;padding:0;position:relative;
+  display:grid;align-items:end;overflow:hidden;
+}
+.tour-bg{
+  position:absolute;inset:0;
+  background:url('live-pink-dress.jpg') center/cover no-repeat;
+  animation:tourZoom 20s ease-in-out infinite alternate;
+  filter:saturate(1.1) contrast(1.05);
+}
+.tour-bg:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(15,10,18,.88),rgba(15,10,18,.35) 55%),
+  linear-gradient(0deg,var(--bg2) 0%,transparent 45%);
+}
+@keyframes tourZoom{to{transform:scale(1.08) translate3d(-1%,0,0)}}
+.tour-content{position:relative;z-index:2;padding:8vw 5vw;max-width:1000px}
+.tour-content .eyebrow{color:var(--pink-bright)}
+.tour-content h2{
+  font:500 clamp(56px,10vw,150px)/.78 var(--serif);
+  letter-spacing:-.07em;margin:15px 0 28px;color:var(--fg);
+}
+.tour-content h2 em{
+  font-style:italic;color:var(--pink-bright);
+  display:block;font-size:.55em;letter-spacing:-.04em;margin-top:10px;
+}
+.tour-content p{
+  max-width:600px;font:400 clamp(18px,2vw,28px)/1.25 var(--serif);
+  color:#ddd0e5;
+}
+.tour-links{margin-top:35px;display:flex;gap:25px;flex-wrap:wrap}
+.tour-link{
+  display:inline-block;border-bottom:1px solid var(--pink);
+  padding-bottom:5px;font-size:12px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--pink-bright);transition:color .3s;
+}
+.tour-link:hover{color:var(--fg)}
+
+/* 数据条 */
+.stats-bar{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:var(--bg);
+}
+.stat{
+  padding:40px 30px;text-align:center;border-right:1px solid var(--line);
+  transition:background .4s;
+}
+.stat:last-child{border-right:0}
+.stat:hover{background:rgba(232,160,208,.05)}
+.stat-num{
+  font:500 clamp(36px,4vw,56px)/1 var(--serif);color:var(--pink);
+  margin-bottom:8px;
+}
+.stat-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+
+/* 电影胶片 */
+.cinema{padding:0;position:relative}
+.cinema-head{padding:100px 5vw 35px}
+.film-strip{
+  display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding:0 5vw 90px;scrollbar-width:none;
+}
+.film-strip::-webkit-scrollbar{display:none}
+.frame{
+  flex:0 0 min(75vw,1000px);height:min(58vw,650px);
+  position:relative;overflow:hidden;scroll-snap-align:center;
+  background:#111;border-radius:2px;
+}
+.frame img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 1.2s cubic-bezier(.2,.7,.2,1),filter .7s;
+  filter:saturate(.9) contrast(1.03);
+}
+.frame:hover img{transform:scale(1.05);filter:saturate(1.15) contrast(1.05)}
+.frame:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(15,10,18,.82));
+}
+.frame-label{
+  position:absolute;z-index:2;left:30px;bottom:28px;
+  font:500 22px var(--serif);color:var(--fg);
+}
+.frame-label span{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--pink);margin-bottom:6px}
+
+/* 专辑区域 */
+.album-section{display:grid;grid-template-columns:.8fr 1.2fr;gap:7vw;align-items:center}
+.album-cover{
+  position:relative;aspect-ratio:1;overflow:hidden;border-radius:2px;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+.album-cover img{width:100%;height:100%;object-fit:cover;transition:transform 1s ease}
+.album-cover:hover img{transform:scale(1.04)}
+.album-cover:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(232,160,208,.12),transparent 50%);
+  pointer-events:none;
+}
+.album-info h3{
+  font:500 clamp(40px,5vw,72px)/.9 var(--serif);
+  letter-spacing:-.05em;margin:0 0 15px;
+}
+.album-info .album-year{color:var(--pink);font-size:14px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px}
+.album-info p{color:var(--muted);font-size:16px;line-height:1.8;margin:0 0 25px}
+.tracklist-mini{display:grid;gap:0;margin-top:25px}
+.track-mini{
+  display:grid;grid-template-columns:40px 1fr auto;gap:15px;
+  padding:13px 0;border-top:1px solid var(--line);
+  font-size:14px;align-items:center;transition:padding-left .3s;
+}
+.track-mini:hover{padding-left:10px}
+.track-mini .num{color:var(--pink);font:500 14px var(--serif)}
+.track-mini .name{color:var(--fg)}
+.track-mini .dur{color:var(--muted);font-size:12px}
+
+/* 精选曲目 */
+.essential{display:grid;grid-template-columns:.6fr 1.4fr;gap:7vw}
+.tracklist{counter-reset:t}
+.track{
+  counter-increment:t;display:grid;grid-template-columns:60px 1fr auto;
+  gap:20px;padding:20px 0;border-top:1px solid var(--line);
+  align-items:center;transition:all .35s;cursor:default;
+}
+.track:hover{padding-left:15px;background:rgba(232,160,208,.04)}
+.track:before{
+  content:counter(t,decimal-leading-zero);
+  color:var(--pink);font:500 14px var(--serif);
+}
+.track strong{font:500 21px var(--serif);transition:color .3s}
+.track:hover strong{color:var(--pink-bright)}
+.track span{color:var(--muted);font-size:12px;letter-spacing:.05em}
+
+/* Wicked 区域 */
+.wicked-section{
+  padding:0;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,var(--bg2),#1a0f1f);
+}
+.wicked-inner{
+  display:grid;grid-template-columns:1fr 1fr;min-height:80svh;
+}
+.wicked-photo{
+  position:relative;overflow:hidden;
+  background:url('wicked-glinda-crown.jpg') center/cover no-repeat;
+}
+.wicked-photo:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(15,10,18,.3));
+}
+.wicked-text{
+  padding:8vw 5vw;display:flex;flex-direction:column;justify-content:center;
+}
+.wicked-text .eyebrow{color:var(--gold)}
+.wicked-text h3{
+  font:500 clamp(44px,6vw,90px)/.88 var(--serif);
+  letter-spacing:-.06em;margin:0 0 25px;
+  background:linear-gradient(135deg,var(--pink-bright),var(--gold));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.wicked-text p{color:var(--muted);font-size:16px;line-height:1.8;max-width:500px;margin:0 0 20px}
+.wicked-text p em{color:var(--pink-bright);font-style:italic}
+
+/* 页脚大图 */
+.footer-img{
+  height:80svh;min-height:550px;position:relative;
+  background:linear-gradient(0deg,rgba(15,10,18,.7),rgba(15,10,18,.2)),
+  url('portrait-silver-hair.jpg') center/cover no-repeat;
+  display:flex;align-items:flex-end;padding:6vw 5vw;overflow:hidden;
+}
+.footer-img:after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at 70% 30%,rgba(232,160,208,.15),transparent 60%);
+}
+.footer-img div{
+  position:relative;z-index:2;
+  font:500 clamp(50px,8vw,130px)/.82 var(--serif);
+  letter-spacing:-.06em;color:var(--fg);
+}
+.footer-img div em{color:var(--pink-bright);font-style:italic}
+
+/* 滚动渐入 */
+.reveal{opacity:0;transform:translateY(40px);transition:1s cubic-bezier(.2,.7,.2,1)}
+.reveal.on{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:1s cubic-bezier(.2,.7,.2,1)}
+.reveal-left.on{opacity:1;transform:none}
+.reveal-right{opacity:0;transform:translateX(40px);transition:1s cubic-bezier(.2,.7,.2,1)}
+.reveal-right.on{opacity:1;transform:none}
+.reveal-scale{opacity:0;transform:scale(.95);transition:1.2s cubic-bezier(.2,.7,.2,1)}
+.reveal-scale.on{opacity:1;transform:none}
+
+/* 响应式 */
+@media(max-width:900px){
+  .intro-grid,.album-section,.essential{grid-template-columns:1fr;gap:50px}
+  .eras-grid{grid-template-columns:1fr 1fr}
+  .stats-bar{grid-template-columns:1fr 1fr}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(3){border-top:1px solid var(--line)}
+  .frame{flex-basis:88vw;height:62vw}
+  .album-cover{max-width:400px}
+  .wicked-inner{grid-template-columns:1fr}
+  .wicked-photo{min-height:60vw}
+}
+@media(max-width:600px){
+  .hero{min-height:640px;padding-bottom:40px}
+  section{padding:70px 20px}
+  .cinema-head{padding:70px 20px 30px}
+  .film-strip{padding:0 20px 70px}
+  .eras-grid{grid-template-columns:1fr}
+  .stats-bar{grid-template-columns:1fr 1fr}
+  .stat{padding:28px 15px}
+  .track{grid-template-columns:45px 1fr}
+  .track span{display:none}
+  .footer-img{min-height:450px}
+  .cursor-glow,.bubbles{display:none}
+  .wicked-text{padding:50px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .cursor-glow,.bubbles{display:none}
+}
+</style>
+</head>
+<body>
+<div class="scroll-progress"></div>
+<div class="grain"></div>
+<div class="bubbles" id="bubbles"></div>
+<div class="cursor-glow"></div>
+
+<header>
+  <a href="../index.html">Weiyi's Music Space</a>
+  <span>Artist 06 / Ariana Grande</span>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="kicker">Pop · R&amp;B · Vocals · Visual Eras</div>
+    <h1>Ariana<br>Grande</h1>
+    <div class="hero-copy">
+      A voice like spun glass — from <em>Sweetener</em>'s pink moon to <em>Eternal Sunshine</em>'s red glow. Pop as atmosphere, as costume, as catharsis.
+    </div>
+    <div class="scroll-hint">Scroll to enter ↓</div>
+  </div>
+</section>
+
+<!-- 跑马灯 -->
+<div class="marquee"><div class="marquee-inner">
+  THANK U NEXT <span>·</span> 7 RINGS <span>·</span> POSITIONS <span>·</span> YES, AND? <span>·</span> WE CAN'T BE FRIENDS <span>·</span> SWEETENER <span>·</span> GOD IS A WOMAN <span>·</span> NO TEARS LEFT TO CRY <span>·</span> DANGEROUS WOMAN <span>·</span>
+  THANK U NEXT <span>·</span> 7 RINGS <span>·</span> POSITIONS <span>·</span> YES, AND? <span>·</span> WE CAN'T BE FRIENDS <span>·</span> SWEETENER <span>·</span> GOD IS A WOMAN <span>·</span> NO TEARS LEFT TO CRY <span>·</span> DANGEROUS WOMAN <span>·</span>
+</div></div>
+
+<!-- 介绍 -->
+<section>
+  <div class="intro-grid">
+    <p class="reveal">
+      Six albums, seven eras, one unmistakable voice. Ariana Grande treats pop as <em>world-building</em> — each era a complete visual universe, from the pink moon of Sweetener to the red haze of Eternal Sunshine.
+    </p>
+    <div class="meta reveal">
+      <div><strong>Selected by</strong>Weiyi Li</div>
+      <div><strong>Listening mode</strong>Album eras · vocal delivery · live production</div>
+      <div><strong>Personal focus</strong>Sweetener World Tour · Eternal Sunshine · Wicked</div>
+      <div><strong>Why it matters</strong>The voice as instrument, the era as Gesamtkunstwerk</div>
+    </div>
+  </div>
+</section>
+
+<!-- 专辑历程 -->
+<section>
+  <div class="eyebrow">The eras · 2013—2024</div>
+  <h2 class="title reveal">Seven worlds.</h2>
+  <div class="eras-grid reveal">
+    <article class="era">
+      <div class="year">2013</div>
+      <h3>Yours Truly</h3>
+      <p>1950s doo-wop and R&B, a debut that announced a voice beyond her years.</p>
+      <div class="tracks">The Way · Baby I · Honeymoon Avenue</div>
+    </article>
+    <article class="era">
+      <div class="year">2014</div>
+      <h3>My Everything</h3>
+      <p>EDM-inflected pop, blockbuster collaborations, a star cementing her place.</p>
+      <div class="tracks">Problem · Break Free · Love Me Harder</div>
+    </article>
+    <article class="era">
+      <div class="year">2016</div>
+      <h3>Dangerous Woman</h3>
+      <p>Alt-pop and R&B edge, a shift from teen star to commanding artist.</p>
+      <div class="tracks">Dangerous Woman · Into You · Side to Side</div>
+    </article>
+    <article class="era">
+      <div class="year">2018</div>
+      <h3>Sweetener</h3>
+      <p>Pharrell's off-kilter production, pastel optimism, and healing after trauma.</p>
+      <div class="tracks">No Tears Left to Cry · God Is a Woman · Breathin</div>
+    </article>
+    <article class="era">
+      <div class="year">2019</div>
+      <h3>thank u, next</h3>
+      <p>Written in weeks, raw and self-assured — a cultural moment and her masterpiece.</p>
+      <div class="tracks">7 Rings · thank u, next · Break Up With Your Girlfriend</div>
+    </article>
+    <article class="era">
+      <div class="year">2020</div>
+      <h3>Positions</h3>
+      <p>Intimate R&B, orchestral flourishes, and lockdown-era vulnerability.</p>
+      <div class="tracks">positions · 34+35 · POV</div>
+    </article>
+    <article class="era">
+      <div class="year">2024</div>
+      <h3>Eternal Sunshine</h3>
+      <p>Soft focus, red gloves, and bittersweet clarity — her most cohesive record.</p>
+      <div class="tracks">yes, and? · we can't be friends · eternal sunshine</div>
+    </article>
+    <article class="era">
+      <div class="year">2024</div>
+      <h3>Wicked</h3>
+      <p>From pop star to Glinda the Good — a Broadway icon reborn on film.</p>
+      <div class="tracks">Popular · What Is This Feeling? · Defying Gravity</div>
+    </article>
+  </div>
+</section>
+
+<!-- Sweetener Tour 特别区域 -->
+<section class="tour-section">
+  <div class="tour-hero">
+    <div class="tour-bg"></div>
+    <div class="tour-content reveal">
+      <div class="eyebrow">The visual era · 2019</div>
+      <h2>Sweetener<br><em>World Tour.</em></h2>
+      <p>A giant inflatable moon, pink tulle, and a voice that filled arenas. The Sweetener World Tour transformed grief into spectacle — every show a cathedral of light and sound.</p>
+      <div class="tour-links">
+        <a class="tour-link" target="_blank" href="https://www.youtube.com/results?search_query=ariana+grande+sweetener+world+tour">Watch tour footage ↗</a>
+        <a class="tour-link" target="_blank" href="https://music.apple.com/us/album/k-bye-for-now-swt-live/1490180601">Live album ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 数据条 -->
+  <div class="stats-bar">
+    <div class="stat reveal">
+      <div class="stat-num" data-count="101">0</div>
+      <div class="stat-label">Shows worldwide</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-num" data-count="1.3">0</div>
+      <div class="stat-label">Million tickets sold</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-num" data-count="4">0</div>
+      <div class="stat-label">Continents toured</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-num">$146M</div>
+      <div class="stat-label">Gross revenue</div>
+    </div>
+  </div>
+</section>
+
+<!-- 电影胶片 -->
+<section class="cinema">
+  <div class="cinema-head">
+    <div class="eyebrow">Live moments</div>
+    <h2 class="title reveal">On stage.<br>Under the moon.</h2>
+  </div>
+  <div class="film-strip">
+    <div class="frame">
+      <img src="live-pink-dress.jpg" alt="Ariana Grande Sweetener Tour pink dress">
+      <div class="frame-label"><span>Sweetener Tour · 2019</span>Pink tulle, O2 Arena</div>
+    </div>
+    <div class="frame">
+      <img src="live-purple-moon.jpg" alt="Ariana Grande under the moon">
+      <div class="frame-label"><span>The moon</span>Giant inflatable, opening night</div>
+    </div>
+    <div class="frame">
+      <img src="live-red-sequin.jpg" alt="Ariana Grande red sequin">
+      <div class="frame-label"><span>Close-up</span>Voice, light, shadow</div>
+    </div>
+    <div class="frame">
+      <img src="live-purple-2048.jpg" alt="Ariana Grande purple light">
+      <div class="frame-label"><span>Purple haze</span>Side profile, arena glow</div>
+    </div>
+    <div class="frame">
+      <img src="live-bbc-orchestra.jpg" alt="Ariana Grande BBC orchestra">
+      <div class="frame-label"><span>BBC Live · 2018</span>Black gown, orchestra</div>
+    </div>
+    <div class="frame">
+      <img src="live-pink-tulle.jpg" alt="Ariana Grande pink tulle dress">
+      <div class="frame-label"><span>Pink era</span>Sweetener, full circle</div>
+    </div>
+  </div>
+</section>
+
+<!-- 专辑 -->
+<section>
+  <div class="album-section">
+    <div class="album-cover reveal-scale">
+      <img src="hero-eternal-sunshine.jpg" alt="Eternal Sunshine album art">
+    </div>
+    <div class="album-info reveal">
+      <div class="album-year">Seventh album · 2024</div>
+      <h3>Eternal<br>Sunshine.</h3>
+      <p>Her most sonically cohesive work — soft-focus synths, whispered vocals, and the bittersweet clarity of moving on. Inspired by Eternal Sunshine of the Spotless Mind, it asks: would you erase a love if you could?</p>
+      <div class="tracklist-mini">
+        <div class="track-mini"><span class="num">01</span><span class="name">intro (end of the world)</span><span class="dur">0:36</span></div>
+        <div class="track-mini"><span class="num">02</span><span class="name">bye</span><span class="dur">2:31</span></div>
+        <div class="track-mini"><span class="num">03</span><span class="name">don't wanna break up again</span><span class="dur">2:41</span></div>
+        <div class="track-mini"><span class="num">05</span><span class="name">eternal sunshine</span><span class="dur">3:31</span></div>
+        <div class="track-mini"><span class="num">08</span><span class="name">the boy is mine</span><span class="dur">3:23</span></div>
+        <div class="track-mini"><span class="num">09</span><span class="name">yes, and?</span><span class="dur">3:25</span></div>
+        <div class="track-mini"><span class="num">10</span><span class="name">we can't be friends</span><span class="dur">3:43</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wicked 区域 -->
+<section class="wicked-section">
+  <div class="wicked-inner">
+    <div class="wicked-photo"></div>
+    <div class="wicked-text reveal-right">
+      <div class="eyebrow">The transformation · 2024</div>
+      <h3>From pop star<br>to Glinda.</h3>
+      <p>After years of speculation, Ariana stepped into the bubble dress of <em>Glinda the Good</em> in Jon M. Chu's film adaptation of Wicked. The role wasn't a departure — it was a culmination. Her voice, always theatrical, found its natural home on the Oz stage.</p>
+      <p>The film became 2024's highest-grossing movie, earning 10 Oscar nominations including Best Picture — and a Best Actress nod for Ariana herself. <em>Popular</em>, once a Broadway showstopper, became a global pop moment all over again.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 精选曲目 -->
+<section>
+  <div class="essential">
+    <div class="reveal-left">
+      <div class="eyebrow">Weiyi's selection</div>
+      <h2 class="title" style="font-size:clamp(48px,6.5vw,95px)">Essential<br>Ariana.</h2>
+      <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-top:20px;max-width:350px">The songs that define each era — from doo-wop debut to orchestral pop to Broadway.</p>
+    </div>
+    <div class="tracklist reveal-right">
+      <div class="track"><strong>Honeymoon Avenue</strong><span>Yours Truly</span></div>
+      <div class="track"><strong>Break Free</strong><span>My Everything</span></div>
+      <div class="track"><strong>Into You</strong><span>Dangerous Woman</span></div>
+      <div class="track"><strong>No Tears Left to Cry</strong><span>Sweetener</span></div>
+      <div class="track"><strong>God Is a Woman</strong><span>Sweetener</span></div>
+      <div class="track"><strong>7 Rings</strong><span>thank u, next</span></div>
+      <div class="track"><strong>thank u, next</strong><span>thank u, next</span></div>
+      <div class="track"><strong>positions</strong><span>Positions</span></div>
+      <div class="track"><strong>POV</strong><span>Positions</span></div>
+      <div class="track"><strong>yes, and?</strong><span>Eternal Sunshine</span></div>
+      <div class="track"><strong>we can't be friends</strong><span>Eternal Sunshine</span></div>
+      <div class="track"><strong>Popular</strong><span>Wicked · 2024</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<div class="footer-img">
+  <div>POP / R&amp;B /<br><em>TRANSFORMATION.</em></div>
+</div>
+
+<script>
+// 滚动进度条
+const progressBar = document.querySelector('.scroll-progress');
+const updateProgress = () => {
+  const h = document.documentElement.scrollHeight - innerHeight;
+  progressBar.style.width = h > 0 ? (scrollY / h * 100) + '%' : '0%';
+};
+addEventListener('scroll', updateProgress, {passive:true});
+addEventListener('resize', updateProgress);
+updateProgress();
+
+// 漂浮气泡
+const bubblesContainer = document.getElementById('bubbles');
+for(let i = 0; i < 12; i++){
+  const b = document.createElement('div');
+  b.className = 'bubble';
+  const size = 20 + Math.random() * 80;
+  b.style.width = size + 'px';
+  b.style.height = size + 'px';
+  b.style.left = Math.random() * 100 + '%';
+  b.style.animationDuration = (12 + Math.random() * 18) + 's';
+  b.style.animationDelay = (Math.random() * 15) + 's';
+  bubblesContainer.appendChild(b);
+}
+
+// 光标光晕
+const glow = document.querySelector('.cursor-glow');
+let glowX = innerWidth/2, glowY = innerHeight/2, targetX = glowX, targetY = glowY;
+addEventListener('pointermove', e => { targetX = e.clientX; targetY = e.clientY; });
+(function animateGlow(){
+  glowX += (targetX - glowX) * .08;
+  glowY += (targetY - glowY) * .08;
+  glow.style.left = glowX + 'px';
+  glow.style.top = glowY + 'px';
+  requestAnimationFrame(animateGlow);
+})();
+
+// 滚动渐入
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
+}, {threshold:.12});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el => obs.observe(el));
+
+// 数字计数动画
+const countObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const el = e.target;
+      const target = parseFloat(el.dataset.count);
+      if(!target) return;
+      const duration = 1800, start = performance.now();
+      const step = now => {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const val = target * eased;
+        el.textContent = val % 1 ? val.toFixed(1) : Math.round(val);
+        if(p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      countObs.unobserve(el);
+    }
+  });
+}, {threshold:.5});
+document.querySelectorAll('.stat-num[data-count]').forEach(el => countObs.observe(el));
+
+// Hero视差
+addEventListener('mousemove', e => {
+  const x = (e.clientX / innerWidth - .5) * 12;
+  const y = (e.clientY / innerHeight - .5) * 8;
+  document.querySelector('.hero-bg').style.transform =
+    `scale(1.03) translate(${x}px,${y}px)`;
+});
+
+// 电影胶片拖拽滚动
+const strip = document.querySelector('.film-strip');
+let isDown = false, startX, scrollLeft;
+strip.addEventListener('mousedown', e => {
+  isDown = true; startX = e.pageX - strip.offsetLeft;
+  scrollLeft = strip.scrollLeft; strip.style.cursor = 'grabbing';
+});
+strip.addEventListener('mouseleave', () => { isDown = false; strip.style.cursor = ''; });
+strip.addEventListener('mouseup', () => { isDown = false; strip.style.cursor = ''; });
+strip.addEventListener('mousemove', e => {
+  if(!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - strip.offsetLeft;
+  strip.scrollLeft = scrollLeft - (x - startX) * 1.5;
+});
+</script>
+</body>
+</html>
