@@ -17,3 +17,21 @@ body{isolation:isolate}.academic-ambient{position:fixed;inset:0;z-index:-1;overf
 .artpop-invitation .artpop-vinyl{width:307.2546%;height:450%;left:-104.6942%;top:-240.1667%;object-fit:fill}
 /* The gel field shares the particle animation's 16-second clock. */
 .academic-ambient .gel-field,.academic-ambient .gel-field.second{animation:none;opacity:.45;will-change:transform,opacity}.academic-ambient .gel-field{background:radial-gradient(ellipse 28% 48% at 12% 43%,rgba(142,185,216,.25),transparent 78%),radial-gradient(ellipse 26% 48% at 91% 48%,rgba(145,187,217,.23),transparent 78%),radial-gradient(ellipse 40% 24% at 53% 96%,rgba(171,204,225,.19),transparent 80%)}.academic-ambient .gel-field.second{background:radial-gradient(ellipse 22% 34% at 15% 66%,rgba(170,200,220,.18),transparent 80%),radial-gradient(ellipse 20% 30% at 86% 24%,rgba(161,197,223,.19),transparent 80%)}@media(prefers-reduced-motion:reduce){.academic-ambient .gel-field{will-change:auto}}
+
+/* View switching: tab-style navigation */
+.hero, main > section, main > .music-invitation { display: none; }
+body[data-view="home"] .hero { display: grid; }
+body[data-view="home"] .music-invitation { display: block; }
+body[data-view="news"] #news { display: block; }
+body[data-view="research"] #research { display: block; }
+body[data-view="publications"] #publications { display: block; }
+body[data-view="experience"] #experience { display: block; }
+body[data-view="honors"] #honors { display: block; }
+body[data-view="contact"] .contact { display: grid; }
+nav a.active { color: var(--blue); box-shadow: 0 2px var(--blue); }
+.wordmark { cursor: pointer; }
+
+/* Text-only award cards (no certificate images) */
+.award { border: 1px solid var(--line); border-radius: 4px; padding: 20px 22px; background: #fff; }
+.award figcaption { margin-top: 0; }
+.award .image-zoom { display: none; }
